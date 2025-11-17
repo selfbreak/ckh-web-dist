@@ -1,0 +1,203 @@
+/* 弹出框样式 */
+.login-model-mix {
+  .wallet-model {
+    .model-header {
+      display: flex;
+      justify-content: flex-end;
+      color: #fff;
+      img {
+        cursor: pointer;
+        width: 38rpx;
+        height: 38rpx;
+      }
+    }
+    .model-content {
+      color: #5a5959;
+      .title {
+        font-size: 32rpx;
+        color: #5a5959;
+        line-height: 56rpx;
+        margin-bottom: 34rpx;
+        text-align: center;
+      }
+      .subTitle {
+        margin-bottom: 20rpx;
+        text-align: center;
+        font-weight: 400;
+        font-size: 26rpx;
+        color: #999999;
+      }
+      .linkAddress {
+        word-break: break-all;
+        margin-bottom: 76rpx;
+        font-weight: 500;
+        font-size: 30rpx;
+        color: #5a5959;
+        text-align: center;
+      }
+      .address-input {
+        // background: rgba(242, 186, 15, 0.03);
+        // border-radius: 64rpx;
+        // border: 2px solid #13ccd7;
+        border-bottom: 4rpx solid #cec9c9;
+
+        padding: 1rpx 8rpx;
+        height: 96rpx;
+        margin: 32rpx 0 48rpx;
+        .input-cael {
+          height: 50rpx;
+          padding: 10rpx;
+          border-radius: 12rpx;
+          background: #1b292c;
+        }
+        .u-input {
+          text-align: right;
+          height: 88rpx;
+          border-radius: 16rpx;
+        }
+      }
+      .deposinput {
+        border-bottom: 4rpx solid #cec9c9;
+
+        padding: 1rpx 8rpx;
+        height: 96rpx;
+        input {
+          height: 96rpx;
+        }
+        .uni-input-input {
+          font-weight: 500;
+          font-size: 64rpx !important;
+          color: #5a5959;
+        }
+      }
+
+      .mallAddress {
+        margin: 32rpx auto 43rpx;
+        background: #f7f7f7;
+        height: 96rpx;
+        padding: 0 24rpx;
+        border-radius: 16rpx;
+        .u-input {
+          text-align: right;
+          height: 96rpx;
+          border-radius: 16rpx;
+        }
+      }
+      .mallBancs {
+        font-size: 28rpx;
+        font-weight: 400;
+        color: #666666;
+      }
+      .malldownIcon {
+        width: 32rpx;
+        height: 32rpx;
+        margin: 8rpx auto;
+        img {
+          width: 100%;
+
+          height: 100%;
+        }
+      }
+      .malltips {
+        font-size: 28rpx;
+        font-weight: 500;
+        color: #666666;
+        text-align: center;
+        margin-top: 24rpx;
+      }
+      .row-mallinput {
+        display: flex;
+        justify-content: space-between;
+        background: #f7f7f7;
+        height: 96rpx;
+        padding: 0 24rpx;
+        border-radius: 16rpx;
+        margin: 16rpx auto;
+        .row-left {
+          display: flex;
+          align-items: center;
+          img {
+            width: 64rpx;
+            height: 64rpx;
+          }
+          view {
+            margin-left: 16rpx;
+            font-size: 32rpx;
+            color: #4b3e58;
+          }
+        }
+        .row-right {
+          margin-left: 40rpx;
+          .u-input {
+            text-align: right;
+            height: 96rpx;
+            border-radius: 16rpx;
+          }
+          .uni-input-input {
+            text-align: right;
+          }
+          .uni-input-placeholder {
+            text-align: right;
+          }
+        }
+      }
+      .bind-adre-tips {
+        font-size: 14rpx;
+        font-weight: 400;
+        text-align: center;
+        margin: 19rpx 0 28rpx;
+      }
+      .footer-item {
+        @include flex-between;
+        // padding-top: 24rpx;
+        view {
+          cursor: pointer;
+          // height: 70rpx;
+          line-height: 70rpx;
+          font-size: 26rpx;
+          text-align: center;
+          border-radius: 56rpx;
+          width: 244rpx;
+        }
+        .cancel {
+          color: #000000;
+          border: 2rpx solid #aeaeae;
+        }
+        .confirm {
+          color: #fff;
+          background: #34AAA1;
+          // background: linear-gradient(44deg, #13ccd7 0%, #379aee 100%);
+        }
+      }
+    }
+  }
+  .logn-btn {
+    cursor: pointer;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 36rpx;
+    font-weight: 400;
+
+    width: 304rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+
+    color: #fff;
+    background: #34AAA1;
+    //background: linear-gradient(44deg, #13ccd7 0%, #379aee 100%);
+    border-radius: 64px;
+  }
+  .logn-btn-larg {
+    cursor: pointer;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30rpx;
+    font-weight: 400;
+    // width: 410rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+    color: #fff;
+    background: linear-gradient(44deg, #13ccd7 0%, #379aee 100%);
+    border-radius: 50rpx;
+  }
+}

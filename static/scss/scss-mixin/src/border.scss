@@ -1,0 +1,127 @@
+@import '../common/theme.scss';
+@import '../common/utils.scss';
+// 默认圆角大小
+$radius-md: px(10);
+// 默认边框宽度
+$border-width: 1px;
+// 默认边框颜色
+$border-color: map-get($colors, 'border-color');
+
+@mixin borderDir($dir, $width: $border-width, $color: $border-color) {
+  border-#{$dir}: $width solid $color;
+}
+
+@mixin grid-border($color: $border-color, $width: $border-width) {
+  & > * {
+    border: $width solid $color;
+    margin-left: 0 - $width;
+    margin-top: 0 - $width;
+  }
+}
+
+@mixin border($color: $border-color, $width: $border-width) {
+  border: $width solid $color;
+}
+@mixin border-top($color: $border-color, $width: $border-width) {
+  @include borderDir(top, $width, $color);
+}
+@mixin border-bottom($color: $border-color, $width: $border-width) {
+  @include borderDir(bottom, $width, $color);
+}
+@mixin border-left($color: $border-color, $width: $border-width) {
+  @include borderDir(left, $width, $color);
+}
+@mixin border-right($color: $border-color, $width: $border-width) {
+  @include borderDir(right, $width, $color);
+}
+
+@mixin radius($radius: $radius-md) {
+  border-radius: $radius;
+}
+@mixin radius-circle() {
+  @include radius(50%);
+}
+@mixin radius-round() {
+  @include radius(1000px);
+}
+
+@mixin border-build() {
+  /* #ifndef APP-NVUE */
+  .b-box {
+    box-sizing: border-box;
+  }
+  /* #endif */
+  .grid-b {
+    @include grid-border();
+  }
+  .b {
+    @include border();
+  }
+  .bb {
+    @include borderDir(bottom);
+  }
+  .bt {
+    @include borderDir(top);
+  }
+  .bl {
+    @include borderDir(left);
+  }
+  .br {
+    @include borderDir(right);
+  }
+
+  .bx {
+    @include borderDir(left);
+    @include borderDir(right);
+  }
+
+  .by {
+    @include borderDir(top);
+    @include borderDir(bottom);
+  }
+
+  @for $i from 0 through 80 {
+    .br-#{$i*2} {
+      @include radius(px($i * 2));
+    }
+    .br-tl-#{$i*2} {
+      border-top-left-radius: px($i * 2);
+    }
+    .br-tr-#{$i*2} {
+      border-top-right-radius: px($i * 2);
+    }
+    .br-bl-#{$i*2} {
+      border-bottom-left-radius: px($i * 2);
+    }
+    .br-br-#{$i*2} {
+      border-bottom-right-radius: px($i * 2);
+    }
+  }
+  .br-c {
+    @include radius-circle();
+  }
+  .br-r {
+    @include radius-round();
+  }
+
+  .bs-d {
+    border-style: dashed;
+  }
+
+  .bs-s {
+    border-style: solid;
+  }
+
+  @for $i from 1 through 10 {
+    .bw-#{$i} {
+      border-width: px($i);
+    }
+    .grid-bw-#{$i} {
+      & > * {
+        margin-left: 0 - px($i);
+        margin-top: 0 - px($i);
+        border-width: px($i);
+      }
+    }
+  }
+}

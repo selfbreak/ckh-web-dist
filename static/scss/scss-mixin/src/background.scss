@@ -1,0 +1,77 @@
+@mixin background-image($url: '') {
+  @if $url != '' {
+    background-image: url($url);
+  }
+  @include background-repeat;
+  @include background-size;
+  @include background-position;
+}
+
+@mixin background-repeat($repeat: no-repeat) {
+  background-repeat: $repeat;
+}
+
+@mixin background-size($size: 100% 100%) {
+  background-size: $size;
+}
+
+@mixin background-position($row: center, $column: center) {
+  background-position: $row $column;
+}
+
+@mixin image-rendering($type: pixelated) {
+  image-rendering: $type;
+}
+@mixin background-build() {
+  .bg-image {
+    @include background-image;
+  }
+  .bg-size-contain {
+    @include background-size(contain);
+  }
+  .bg-size-cover {
+    @include background-size(cover);
+  }
+  .img-pixelated {
+    @include image-rendering;
+  }
+  .bg-pos-c {
+    @include background-position(center, center);
+  }
+  .bg-pos-c-t {
+    @include background-position(center, top);
+  }
+  .bg-pos-c-b {
+    @include background-position(center, bottom);
+  }
+  .bg-pos-l {
+    @include background-position(left, center);
+  }
+  .bg-pos-l-t {
+    @include background-position(left, top);
+  }
+  .bg-pos-l-b {
+    @include background-position(left, bottom);
+  }
+  .bg-pos-r {
+    @include background-position(right, center);
+  }
+  .bg-pos-r-t {
+    @include background-position(right, top);
+  }
+  .bg-pos-r-b {
+    @include background-position(right, bottom);
+  }
+  .bg-repeat {
+    @include background-repeat(repeat);
+  }
+  .bg-repeat-x {
+    @include background-repeat(repeat-x);
+  }
+  .bg-repeat-y {
+    @include background-repeat(repeat-y);
+  }
+  .bg-no-repeat {
+    @include background-repeat(no-repeat);
+  }
+}

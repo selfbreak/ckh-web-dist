@@ -1,0 +1,575 @@
+// uni.scss全局样式初始化参数 字体,颜色
+@import "~@/uni.scss";
+
+.dec-goods-flex {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+.dec-goods-box { 
+	width: 100%;
+	padding: 16rpx 8rpx;
+	overflow: hidden;
+	&.double {
+	width: 50%;
+	}
+}
+//弹性盒子相关:
+//$direction: 取值范围如下:
+//	row： 主轴与行内轴方向作为默认的书写模式。即横向从左到右排列（左对齐）。
+//	row-reverse： 对齐方式与row相反。
+//	column： 主轴与块轴方向作为默认的书写模式。即纵向从上往下排列（顶对齐）。
+//	column-reverse： 对齐方式与column相反。
+// 主轴为'direction'时的水平垂直居中
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @if $direction {
+    flex-direction: $direction;
+  }
+}
+// 垂直居中,左对齐
+@mixin flex-center-left {
+  display: flex;
+  align-items: center;
+}
+
+// 垂直居中,右对齐
+@mixin flex-center-right {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 主轴为'direction'时,垂直居中,水平方向两端对齐
+@mixin flex-between($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @if $direction {
+    flex-direction: $direction;
+  }
+}
+
+// 主轴为'direction'时,垂直居中,水平方向平均分布
+@mixin flex-around($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @if $direction {
+    flex-direction: $direction;
+  }
+}
+
+// 背景图片
+// auto： 背景图像的真实大小。
+// cover： 将背景图像等比缩放到完全覆盖容器，背景图像有可能超出容器。
+// contain： 将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。
+@mixin background-img($url: false, $size: cover) {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: $size;
+  @if $url {
+    background-image: url($url);
+  }
+}
+
+// 单行文本省略号...
+@mixin ellipsis-single {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+// 多行文本省略号...
+@mixin ellipsis-multi($num: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+}
+
+// 文字两端对齐
+@mixin text-justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+// 强制换行
+@mixin toWrap {
+  /* 只对英文起作用，以字母作为换行依据。 */
+  word-break: break-all;
+  /* 只对英文起作用，以单词作为换行依据。*/
+  word-wrap: break-word;
+  /* 只对中文起作用，强制换行。*/
+  white-space: pre-wrap;
+}
+// 强制不换行
+@mixin noWrap {
+  /* 只对英文起作用，以字母作为换行依据。 */
+  word-break: normal;
+  /* 只对英文起作用，以单词作为换行依据。*/
+  word-wrap: normal;
+  /* 只对中文起作用，强制换行。*/
+  white-space: nowrap;
+}
+
+//阴影
+//x轴方向 y轴方向 模糊距离  阴影颜色
+@mixin shadow-base($x: 0rpx, $y: 3rpx, $b: 6rpx, $c: rgba(#000, 0.06)) {
+  box-shadow: $x $y $b $c;
+}
+
+//盒子大小
+@mixin size($width: 100%, $height: 100%) {
+  @if $width {
+    width: $width;
+  }
+  @if $height {
+    height: $height;
+  }
+}
+
+//边框相关
+//默认边框
+@mixin borderBase($height: 2rpx, $style: solid, $color: #ddd) {
+  border: $height $style $color;
+}
+
+@mixin borderCard($width: 702rpx, $height: 816rpx) {
+  margin: 40rpx auto;
+  width: $width;
+  height: $height;
+  box-sizing: border-box;
+  border-radius: 32rpx;
+  padding: 2rpx;
+  background-image: -webkit-linear-gradient(90deg, #f6e7a5, #f7a375);
+  .card-conr {
+    padding: 40rpx;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #353130, #1a1717);
+    box-sizing: border-box;
+    border-radius: 32rpx;
+    .conr-title {
+      margin-bottom: 48rpx;
+      img {
+        width: 100%;
+        height: 68rpx;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+//圆角边框
+@mixin borderRadius($radius: 10rpx) {
+    border-radius: $radius;
+}
+
+//倒三角 （可用于展开 收起）
+ @mixin triangle($width: 100rpx) {
+      height: 0;
+      width: 0;
+      border-top:$width  var(--primaryColor) ;
+      border-left: $width solid transparent;
+      border-right: $width solid transparent;
+      border-bottom: $width solid transparent;
+}
+// 选中的按钮
+@mixin activeBtn($btHeight:64rpx, $btWidth:610rpx, $fontSzie:28rpx,) {
+    cursor: pointer;
+    text-align: center;
+    font-size: $fontSzie;
+    width:  $btWidth;
+    height: $btHeight;
+    line-height: $btHeight;
+    border-radius: 8rpx;
+    color: #fff;
+    background: linear-gradient(var(--primaryColor));
+}
+
+//禁用的按钮
+@mixin ordinaryBtn($btHeight:64rpx, $btWidth:610rpx, $fontSzie:28rpx, $line:false) {
+    text-align: center;
+    font-size: $fontSzie;
+    width:  $btWidth;
+    height: $btHeight;
+    line-height: $btHeight;
+    border-radius: 8rpx;
+    color: #fff;
+    background-color:#cccccc;
+    cursor: not-allowed;
+    @if $line {
+        text-decoration: line-through;
+    }
+}
+
+
+/* ...............固定底部的单个按钮 .................... */
+// $btHeight:按钮高度, $btWidth:按钮宽度, $height:底部固定的容器高度,$fontSzie:字体, $line:禁用时是否需要下划线（true或false）
+@mixin fixed-singleButton($btHeight:64rpx, $btWidth:610rpx, $height:122rpx,$fontSzie:28rpx, $line:false) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: $height;
+        line-height: $height;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: var(--primarybgColor);
+            view{
+                text-align: center;
+                font-size: $fontSzie;
+                height: $btHeight;
+                line-height: $btHeight;
+                border-radius: 8rpx;
+                width:  $btWidth;
+            }
+            .active-btn{
+                background: linear-gradient(var(--primaryColor));
+                color: #fff;
+                cursor: pointer;
+                
+            }
+            .ordinary-btn{
+                background: #cccccc;
+                color: #fff;
+                cursor: not-allowed;
+                padding: 0 5px 0 5px;
+                @if $line {
+                    // 禁用时加下划线（空投 盲盒）
+                    text-decoration: line-through;
+                }
+            }
+}
+
+/*  所有活动详情 样式混入模块 */
+// 两端展开 收起
+@mixin both-ends {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25rpx 0 61rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+    img{
+        width: 24rpx;
+        height: 14rpx;
+    }
+}
+// 详情发行方
+@mixin issuer-item {
+    .issuer-body{
+        padding: 30rpx 61rpx 48rpx;
+        display: flex;
+        align-items: center;
+        .user-img{
+            image{
+            width: 74rpx;
+            height: 74rpx;
+            border-radius: 50%;
+            }
+        }
+        .user-right{
+            margin-left: 20rpx;
+            :first-child{
+                font-size: 24rpx;
+                color: #999999;
+            }
+            :last-child{
+                font-size: 28rpx;
+                color: #000000;
+            }
+        }
+    }
+}
+@mixin good-title {
+    //padding: 23rpx 20rpx 8rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color:var(--globalFontColor) ;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    word-wrap: break-word;
+    &.big{
+      font-size:42rpx;
+    }
+    &.double{
+      font-size: 30rpx;
+    }
+  }
+// 副标题模块
+@mixin subTitle-item {
+    position: relative;
+    margin: -106rpx 0 30rpx 0;
+    z-index: 2;
+    // margin: -30rpx 0 50rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   .title{
+     font-size: 36rpx;
+    color: var(--globalFontColor);
+     font-weight: bold;
+    }
+    .good-tips{
+       margin-top: 18rpx;
+       display: flex;
+     view{
+         height: 48rpx;
+         line-height: 48rpx;
+         text-align: center;
+         color: #fff;
+         background: var(--labelColor);
+         border-radius:24rpx;
+         margin: 0 10rpx;
+         width: 195rpx;
+         font-size: 26rpx;
+     }
+     }
+}
+
+@mixin short2-image-wrap {
+    //图片
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    // text-align: center;
+    height: 680rpx;
+    // &.big{
+    //     font-size:42rpx;
+    //   }
+      &.double{
+        height: 332rpx;
+      }
+    
+    .good-images {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover
+    }
+}
+@mixin price-com {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-weight: bold;
+    .company-price{
+       color: #e84040;
+       font-size: 24rpx;
+       &.big {
+        font-size: 38rpx;
+      }
+      &.double {
+        font-size: 26rpx;
+      }
+      &.list-x{
+        font-size: 26rpx;
+      }
+    }
+    .sale-price {
+      color: #e84040;
+      display: flex;
+      justify-content: flex-end;
+      &.big {
+        font-size: 48rpx;
+      }
+      &.double {
+        font-size: 36rpx;
+      }
+      &.list-x{
+        font-size: 36rpx;
+      }
+    }
+
+}
+@mixin price2-com {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-size: 32rpx;
+    font-style: oblique;
+    font-weight: bold;
+    color:#000000;
+  }
+  @mixin good-eventstate {
+    position: absolute;
+    height: 40rpx;
+    line-height: 38rpx;
+    top:20rpx;
+    left: 10rpx;
+    // background: #33333396;
+    background-color: rgba(0,0,0,.65);
+  
+    border-radius: 22rpx;
+    display: flex;
+    padding: 0  18rpx;
+    font-size: 24rpx;
+    .sta_tname {
+      font-size: 24rpx;
+      color: #24d292;
+      margin-left: 10rpx;
+    }
+    .dis_tname{
+      font-size: 24rpx;
+      color: #FFFFFF;
+      margin-left: 10rpx;
+    }
+  }
+
+  @mixin sell-out($top:50%){
+    border-radius: 32rpx 32rpx 0 0;
+    background-color: rgba(0,0,0,.65);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    img{
+      width: 180rpx;
+      height: 180rpx;
+      position: absolute;
+      left: 50%;
+      top: $top;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @mixin category-limt-big {
+    //标签的限量组合式（卡片二 (大图模式 按钮便签样式 .category-count-item）
+    display: flex;
+    .goods-category-info{
+              margin-right: 10rpx;
+              .good-limt-category{
+                min-width: 92rpx;
+                height: 36rpx;
+                line-height: 36rpx;
+                background: #e84040;
+                border-radius: 20rpx;
+                text-align: center;
+                font-size: 24rpx;
+                color: #030A10;
+                font-weight: 500;
+              }
+    }
+    .good-limt-count{
+              display: flex;
+              align-items: center;
+              height: 36rpx;
+              line-height: 36rpx;
+              min-width: 180rpx;
+              background: #e84040;
+              border-radius: 20rpx;
+              text-align: center;
+              font-size: 24rpx;
+              color: #030A10;
+              font-weight: 500;
+              .gtext{
+                min-width: 96rpx;
+                text-align: center;
+              }
+              .gcount{
+                margin: 0 2rpx 0 0;
+                border-radius: 20rpx;
+                min-width: 100rpx;
+                height: 32rpx;
+                line-height: 32rpx;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.65);
+                color: #e84040;
+  
+              }
+    }
+  }
+  
+  @mixin issuer2-com {
+    //发行方（卡片二）
+    display: flex;
+    align-items: center;
+    .logo {
+      width:38rpx;
+      height: 38rpx;
+      border-radius: 50%;
+      .img-logo {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+        border-radius: 50%;
+      }
+    }
+    .info {
+      margin-left: 18rpx;
+        color: #fff;
+        .info-name {
+            font-size:24rpx;
+        }
+    }
+  }
+  @mixin good-image-wrap {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 32rpx 32rpx 0 0;
+    &.big {
+      height: 674rpx;
+    }
+    &.double {
+      height: 332rpx;
+    }
+    .good-images {
+        width: 100%;
+        // height: 100%;
+        object-fit: cover;
+        display: block;
+        &.big {
+          height: 674rpx;
+        }
+        &.double {
+          height: 332rpx;
+        }
+    }
+  }
+  //发行方卡片
+@mixin issuer-com {
+  display: flex;
+  align-items: center;
+  .logo {
+    .img-logo {
+     width: 36rpx;
+     height: 36rpx;
+      vertical-align: top;
+      border-radius: 50%;
+    }
+  }
+  .info {
+      margin-left: 12rpx;
+      color:#020E12;
+      .info-name {
+        color: #020E12;
+        font-size: 24rpx;
+        width: 190rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+    }
+}

@@ -1,0 +1,123 @@
+@import '../common/theme.scss';
+@import '../common/utils.scss';
+// 默认上下边距
+$col-gap: px(10);
+// 默认左右边距
+$row-gap: px(15);
+
+@mixin margin-row($n: $row-gap) {
+  margin-left: $n;
+  margin-right: $n;
+}
+@mixin margin-col($n: $col-gap) {
+  margin-top: $n;
+  margin-bottom: $n;
+}
+
+@mixin padding-row($n: $row-gap) {
+  padding-left: $n;
+  padding-right: $n;
+}
+@mixin padding-col($n: $col-gap) {
+  padding-top: $n;
+  padding-bottom: $n;
+}
+
+@mixin margin-center() {
+  @include margin-row(auto);
+}
+
+@mixin boxMixin($name, $style) {
+  /* #ifndef APP-NVUE */
+  .#{$name}-auto {
+    #{$style}: auto;
+  }
+  /* #endif */
+  @for $i from 0 through 250 {
+    $pxKey: $i * 1;
+    $pxValue: px($pxKey);
+
+    .#{$name}-#{$pxKey} {
+      #{$style}-left: $pxValue;
+      #{$style}-right: $pxValue;
+      #{$style}-top: $pxValue;
+      #{$style}-bottom: $pxValue;
+    }
+    .#{$name}l-#{$pxKey} {
+      #{$style}-left: $pxValue;
+    }
+    .#{$name}r-#{$pxKey} {
+      #{$style}-right: $pxValue;
+    }
+    .#{$name}t-#{$pxKey} {
+      #{$style}-top: $pxValue;
+    }
+    .#{$name}b-#{$pxKey} {
+      #{$style}-bottom: $pxValue;
+    }
+    .#{$name}x-#{$pxKey} {
+      #{$style}-left: $pxValue;
+      #{$style}-right: $pxValue;
+    }
+    .#{$name}y-#{$pxKey} {
+      #{$style}-top: $pxValue;
+      #{$style}-bottom: $pxValue;
+    }
+
+    .#{$name}-#{$pxKey}-i {
+      #{$style}-left: $pxValue !important;
+      #{$style}-right: $pxValue !important;
+      #{$style}-top: $pxValue !important;
+      #{$style}-bottom: $pxValue !important;
+    }
+    .#{$name}l-#{$pxKey}-i {
+      #{$style}-left: $pxValue !important;
+    }
+    .#{$name}r-#{$pxKey}-i {
+      #{$style}-right: $pxValue !important;
+    }
+    .#{$name}t-#{$pxKey}-i {
+      #{$style}-top: $pxValue !important;
+    }
+    .#{$name}b-#{$pxKey}-i {
+      #{$style}-bottom: $pxValue !important;
+    }
+    .#{$name}x-#{$pxKey}-i {
+      #{$style}-left: $pxValue !important;
+      #{$style}-right: $pxValue !important;
+    }
+    .#{$name}y-#{$pxKey}-i {
+      #{$style}-top: $pxValue !important;
+      #{$style}-bottom: $pxValue !important;
+    }
+  }
+	.#{$name}t-auto {
+	  #{$style}-top: auto;
+	}
+	.#{$name}l-auto {
+	  #{$style}-left: auto;
+	}
+	.#{$name}r-auto {
+	  #{$style}-right: auto;
+	}
+	.#{$name}b-auto {
+	  #{$style}-bottom: auto;
+	}
+	.#{$name}x-auto {
+	  #{$style}: 0 auto;
+	}
+	.#{$name}y-auto {
+	  #{$style}: auto 0;
+	}
+}
+
+@mixin box-build() {
+  @include boxMixin(m, margin);
+  @include boxMixin(p, padding);
+  @for $i from 1 through 12 {
+    .box-shadow-#{$i*5} {
+      $j: px($i * 5);
+      box-shadow: 0 0 $j map-get($colors, 'box-shadow-color');
+    }
+  }
+}

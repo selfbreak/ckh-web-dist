@@ -1,0 +1,28 @@
+@import '../common/utils.scss';
+
+@mixin height-build() {
+  /* 高(1~400) */
+  @for $i from 1 through 1000 {
+    .h-#{$i*1} {
+      height: px($i * 1);
+    }
+  }
+	/* 最小高(1~400) */
+	@for $i from 1 through 1000 {
+	  .min-h-#{$i*1} {
+	    min-height: px($i * 1);
+	  }
+	}
+	/* 最大高(1~400) */
+	@for $i from 1 through 1000 {
+	  .max-h-#{$i*1} {
+	    max-height: px($i * 1);
+	  }
+	}
+  /* 高百分比(1~100) */
+  @for $i from 0 through 100 {
+    .h-#{$i*1}-100 {
+      height: $i * 1%;
+    }
+  }
+}

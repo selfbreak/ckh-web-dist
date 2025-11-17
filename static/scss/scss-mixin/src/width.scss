@@ -1,0 +1,28 @@
+@import '../common/utils.scss';
+
+@mixin width-build() {
+  /* 宽(1~400) */
+  @for $i from 0 through 750 {
+    .w-#{$i*1} {
+      width: px($i * 1);
+    }
+  }
+	/* 最小高(1~400) */
+	@for $i from 1 through 400 {
+	  .min-w-#{$i*1} {
+	    min-width: px($i * 1);
+	  }
+	}
+	/* 最大高(1~400) */
+	@for $i from 1 through 400 {
+	  .max-w-#{$i*1} {
+	    max-width: px($i * 1);
+	  }
+	}
+  /* 宽百分比(1~100) */
+  @for $i from 0 through 100 {
+    .w-#{$i*1}-100 {
+      width: $i * 1%;
+    }
+  }
+}

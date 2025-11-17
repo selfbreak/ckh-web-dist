@@ -1,0 +1,44 @@
+@import '../common/theme.scss';
+
+@mixin color-build() {
+  @each $name in map-keys($colors) {
+    .c-#{"" + $name} {
+      color: map-get($colors, $name);
+    }
+  }
+  @each $name in map-keys($colors) {
+    .bg-#{"" + $name} {
+      background-color: map-get($colors, $name);
+    }
+  }
+
+  @each $name in map-keys($colors) {
+    .bc-#{"" + $name} {
+      border-color: map-get($colors, $name);
+    }
+  }
+
+  @each $name in map-keys($colors) {
+    .hoverc-#{"" + $name} {
+      &:hover {
+        color: map-get($colors, $name);
+      }
+    }
+  }
+
+  @each $name in map-keys($colors) {
+    .hoverbg-#{"" + $name} {
+      &:hover {
+        background-color: map-get($colors, $name);
+      }
+    }
+  }
+
+  @each $name in map-keys($colors) {
+    .hoverbc-#{"" + $name} {
+      &:hover {
+        border-color: map-get($colors, $name);
+      }
+    }
+  }
+}

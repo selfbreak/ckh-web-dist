@@ -1,0 +1,58 @@
+.dec-marketShort-list{
+    padding: 10rpx 30rpx;
+    .mark-item{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 140rpx;
+      .mark-left{
+        .title-top{
+          display: flex;
+           .good-subTitle{
+          margin: 0 0 8rpx 0;
+          @include good-title;
+        }
+        .good-eventstate{
+          margin-left: 15rpx;
+            view{
+              font-size: 24rpx;
+              border-radius: 40rpx;
+              padding: 0 16rpx;
+                 font-weight: 500;
+            }
+            .suc{
+              color: #e84040;
+              background: #FDF6EF;
+            }
+            .dis{
+              color: #787a84;
+              background: #e5e6e7;
+            }
+        }
+        }
+        .good-desc{
+          display: flex;
+          color: #6B6B6B;
+          font-size: 24rpx;
+        }
+        
+      }
+      .mark-right{
+        display: flex;
+        align-items: center;
+          .good-limt-price {
+          display: flex;
+          font-size: 40rpx;
+          font-style: oblique;
+          font-weight: bold;
+  
+          }
+          .right-icon{
+            font-weight: bold;
+            margin:-4rpx 0 0 6rpx;
+          }
+  
+      }
+    }
+  
+  }
