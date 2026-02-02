@@ -151,6 +151,15 @@
                 .category-count-item{
                     display: flex;
                     margin: 30rpx 0 0 0;
+                      .category{
+                        color: #ffffff;
+                        background: #e84040;
+                        padding: 6rpx 16rpx;
+                        font-size: 24rpx;
+                        font-weight: 400;
+                        border-radius: 6rpx;
+                        margin-right: 24rpx;
+                    }
                     .good-limt-count{
                         margin-right: 24rpx;
                      display: flex;
